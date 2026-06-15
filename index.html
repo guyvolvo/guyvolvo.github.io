@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="System Administrator specializing in infrastructure automation, observability engineering, and Azure Cloud environments.">
+  <meta name="theme-color" content="#161616">
+  <meta property="og:title" content="Guy Voloshin - Infrastructure &amp; Automation Engineer">
+  <meta property="og:description" content="System Administrator specializing in infrastructure automation, observability engineering, and Azure Cloud environments.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://guyvolvo.github.io">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230f0f0f'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' font-weight='700' fill='%23f0f0f0'>G</text></svg>">
+  <title>Guy Voloshin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:     oklch(0.09 0.000 0);
+      --border: oklch(0.20 0.000 0);
+      --ink:    oklch(0.91 0.000 0);
+      --muted:  oklch(0.56 0.000 0);
+      --link:   oklch(0.8733 0.0697 157.76);
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      body { animation: fade 0.35s ease both; }
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    /* -- Header -- */
+    .header {
+      padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(1.25rem, 3vw, 2rem);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-name {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 7vw, 4.25rem);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      text-wrap: balance;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-contact a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .hero-contact a:hover,
+    .hero-contact a:focus-visible {
+      color: var(--link);
+    }
+
+    .hero-summary {
+      font-size: 0.97rem;
+      line-height: 1.68;
+      color: var(--ink);
+      max-width: 65ch;
+      text-wrap: pretty;
+    }
+
+    /* -- Sections -- */
+    .section {
+      padding: clamp(1.25rem, 3vw, 2rem) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    h2.section-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: clamp(0.85rem, 2vw, 1.25rem);
+    }
+
+    /* -- Experience -- */
+    .role + .role {
+      margin-top: clamp(1.25rem, 3vw, 1.75rem);
+      padding-top: clamp(1.25rem, 3vw, 1.75rem);
+      border-top: 1px solid var(--border);
+    }
+
+    .role-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.15rem 1.5rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .role-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+
+    .role-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .role-company {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+    }
+
+    .role-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .role-list li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--ink);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .role-list li::before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    /* -- Skills -- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem 2rem;
+    }
+
+    .skill-cat {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-items {
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* -- Background -- */
+    .bg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem 2rem;
+    }
+
+    .bg-label {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .bg-value {
+      font-size: 0.88rem;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .end { height: clamp(2rem, 5vw, 3rem); }
+
+    :focus-visible {
+      outline: 1px solid var(--link);
+      outline-offset: 3px;
+    }
+
+    /* -- Terminal -- */
+    .terminal {
+      margin: clamp(1.5rem, 4vw, 2.25rem) 0 clamp(1rem, 3vw, 1.75rem);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.5),
+        0 8px 24px rgba(0,0,0,0.5),
+        0 24px 64px rgba(0,0,0,0.4);
+      font-family: 'Ubuntu Mono', 'Courier New', monospace;
+    }
+
+    .terminal-bar {
+      background: #1c1c1c;
+      padding: 0 14px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      user-select: none;
+    }
+
+    .terminal-dots { display: flex; gap: 8px; align-items: center; z-index: 1; }
+
+    .terminal-dot { width: 13px; height: 13px; border-radius: 50%; }
+    .terminal-dot-close { background: #ff5f57; }
+    .terminal-dot-min   { background: #febc2e; }
+    .terminal-dot-max   { background: #28c840; }
+
+    .terminal-title {
+      position: absolute;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 13px;
+      color: #555555;
+      pointer-events: none;
+    }
+
+    .terminal-body {
+      background: #0f0f0f;
+      padding: 14px 16px 18px;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #eeeeec;
+    }
+
+    .t-prompt { display: flex; flex-wrap: wrap; margin-bottom: 2px; }
+    .t-user   { color: #a8c8a0; font-weight: 700; }
+    .t-colon  { color: #eeeeec; }
+    .t-path   { color: #a0b8cc; font-weight: 700; }
+    .t-dollar { color: #eeeeec; }
+    .t-cmd    { color: #eeeeec; margin-left: 1ch; }
+
+    .t-ls {
+      columns: 4;
+      column-gap: 0;
+      margin: 6px 0 10px;
+    }
+
+    @media (max-width: 560px) { .t-ls { columns: 3; } }
+    @media (max-width: 380px) { .t-ls { columns: 2; } }
+
+    .t-ls span {
+      display: block;
+      color: #a0b8cc;
+      font-weight: 700;
+      padding: 1px 0;
+      padding-right: 1.5ch;
+      break-inside: avoid;
+      white-space: nowrap;
+    }
+
+    .t-cursor {
+      display: inline-block;
+      width: 0.6ch;
+      height: 1.1em;
+      background: #eeeeec;
+      vertical-align: text-bottom;
+      margin-left: 1px;
+      animation: blink 1.1s step-end infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) { .t-cursor { animation: none; } }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="header">
+      <h1 class="hero-name">Guy Voloshin</h1>
+      <p class="hero-title">System &amp; Network Administrator</p>
+      <nav class="hero-contact" aria-label="Contact links">
+        <a href="mailto:guyvoloshin@gmail.com">guyvoloshin@gmail.com</a>
+        <a href="tel:+972587858580">+972 58 785 8580</a>
+        <a href="https://github.com/guyvolvo" target="_blank" rel="noopener noreferrer">github.com/guyvolvo</a>
+        <a href="https://linkedin.com/in/guyvoloshin" target="_blank" rel="noopener noreferrer">linkedin.com/in/guyvoloshin</a>
+      </nav>
+      <p class="hero-summary">
+        System &amp; Network Administrator specializing in infrastructure automation
+        and observability engineering. Building production-grade internal tooling and
+        automated pipelines in Python, PowerShell, and Bash across hybrid Azure and
+        on-premises environments.
+      </p>
+    </header>
+
+    <div class="terminal" role="img" aria-label="Terminal showing ls in ~/skills — Guy Voloshin's technical skills">
+      <div class="terminal-bar">
+        <div class="terminal-dots">
+          <span class="terminal-dot terminal-dot-close"></span>
+          <span class="terminal-dot terminal-dot-min"></span>
+          <span class="terminal-dot terminal-dot-max"></span>
+        </div>
+        <span class="terminal-title">guy@debian: ~/skills</span>
+      </div>
+      <div class="terminal-body">
+        <div class="t-prompt">
+          <span class="t-user">guy@debian</span><span class="t-colon">:</span><span class="t-path">~/skills</span><span class="t-dollar">$</span><span class="t-cmd">ls</span>
+        </div>
+        <div class="t-ls" aria-hidden="true">
+          <span>active-directory</span>
+          <span>alertmanager</span>
+          <span>ansible</span>
+          <span>azure</span>
+          <span>bash</span>
+          <span>conditional-access</span>
+          <span>docker</span>
+          <span>entra-id</span>
+          <span>fortinet-vpn</span>
+          <span>git</span>
+          <span>github-actions</span>
+          <span>grafana</span>
+          <span>hyper-v</span>
+          <span>iam</span>
+          <span>intune</span>
+          <span>javascript</span>
+          <span>linux</span>
+          <span>loki</span>
+          <span>microsoft-edr-xdr</span>
+          <span>n8n</span>
+          <span>powershell</span>
+          <span>prometheus</span>
+          <span>python</span>
+          <span>rbac</span>
+          <span>rest-apis</span>
+          <span>sql</span>
+          <span>veeam</span>
+          <span>vmware</span>
+          <span>windows-server</span>
+        </div>
+        <div class="t-prompt">
+          <span class="t-user">guy@debian</span><span class="t-colon">:</span><span class="t-path">~/skills</span><span class="t-dollar">$</span><span class="t-cursor"></span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="exp-label">
+      <h2 class="section-label" id="exp-label">Experience</h2>
+
+      <article class="role">
+        <div class="role-top">
+          <span class="role-title">System &amp; Network Administrator</span>
+          <span class="role-date" aria-label="January 2026 to present">Jan 2026 - Present</span>
+        </div>
+        <div class="role-company">Epstein Project Management</div>
+        <ul class="role-list">
+          <li>Managing cloud identity and access (IAM) across Microsoft Azure, Entra ID, Intune, and Active Directory: user lifecycle, endpoint security, and Conditional Access policy enforcement.</li>
+          <li>Administering on-prem network infrastructure including Fortinet firewall and VPN, IT asset inventory, remote endpoint management via Atera, and backup &amp; recovery with Veeam.</li>
+          <li>Designed and deployed automated employee onboarding pipeline using n8n and Ansible, achieving full account provisioning in under 10 seconds, zero human input.</li>
+          <li>Built full observability stack: Grafana, Prometheus, Loki, Alertmanager; custom Python integration with Microsoft Graph API for incident alerting; extended monitoring to n8n workflow executions via a custom log poller.</li>
+          <li>Cut workstation cloud migration hands-on time by ~80% using a PowerShell automation script that persists progress across reboots and account switches, enabling unattended migration at scale.</li>
+          <li>Providing Tier 1-3 Help Desk support for 400 users.</li>
+        </ul>
+      </article>
+
+      <article class="role">
+        <div class="role-top">
+          <span class="role-title">Freelance IT Services</span>
+          <span class="role-date" aria-label="March 2026 to present">Mar 2026 - Present</span>
+        </div>
+        <div class="role-company">Self Employed</div>
+        <ul class="role-list">
+          <li>Google Workspace administration for a private client: full DNS infrastructure migration across multiple registrars, email authentication (SPF, DKIM, DMARC), website uptime, and cloud workspace backup architecture.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section" aria-labelledby="skills-label">
+      <h2 class="section-label" id="skills-label">Skills</h2>
+      <div class="skills-grid">
+        <div>
+          <div class="skill-cat">Cloud &amp; Infrastructure</div>
+          <div class="skill-items">Microsoft Azure, Entra ID, Active Directory, Intune, Linux, Windows Server, Hyper-V, VMware, VirtualBox</div>
+        </div>
+        <div>
+          <div class="skill-cat">Networking &amp; Security</div>
+          <div class="skill-items">Fortinet Firewall/VPN, Cynet AV, Veeam, Microsoft EDR/XDR, IAM, RBAC, Conditional Access, SPF/DKIM/DMARC</div>
+        </div>
+        <div>
+          <div class="skill-cat">DevOps &amp; Observability</div>
+          <div class="skill-items">Docker, Ansible, n8n, Git, GitHub Actions, Prometheus, Grafana, Loki, Alertmanager, PromQL, LogQL, RESTful APIs</div>
+        </div>
+        <div>
+          <div class="skill-cat">Programming</div>
+          <div class="skill-items">Python, PowerShell, Bash, JavaScript, SQL</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="bg-label">
+      <h2 class="section-label" id="bg-label">Background</h2>
+      <div class="bg-grid">
+        <div>
+          <div class="bg-label">Education</div>
+          <div class="bg-value">High School Bagrut<br>Specialization: Computer Science &amp; Physics</div>
+        </div>
+        <div>
+          <div class="bg-label">Military Service</div>
+          <div class="bg-value">Armored Corps; technological energy efficiency role. Executive-level reporting, drove millions in annual savings.</div>
+        </div>
+        <div>
+          <div class="bg-label">Languages</div>
+          <div class="bg-value">Hebrew (Native), English (Fluent), Russian (Fluent)</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="end" aria-hidden="true"></div>
+  </div>
+</body>
+</html>
